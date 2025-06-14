@@ -17,13 +17,12 @@ app.get('/', (req, res) => {
 });
 // ...existing code...
 
-// mongoose.connect(process.env.MONGO_URI);
-//.then(() => console.log("MongoDB Connected"))
-//.catch(err => console.log(err));
-
-mongoose.connect(MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log("DB connection error:", err));
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.log(err));
 
 app.use('/api/users', userRoutes);
 app.use('/api/messages', messageRoutes);
