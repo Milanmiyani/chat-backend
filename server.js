@@ -17,10 +17,13 @@ app.get('/', (req, res) => {
 });
 // ...existing code...
 
-mongoose.connect(process.env.MONGO_URI);
+// mongoose.connect(process.env.MONGO_URI);
+//.then(() => console.log("MongoDB Connected"))
+//.catch(err => console.log(err));
 
-.then(() => console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+mongoose.connect(MONGO_URI)
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log("DB connection error:", err));
 
 app.use('/api/users', userRoutes);
 app.use('/api/messages', messageRoutes);
