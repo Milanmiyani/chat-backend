@@ -20,14 +20,15 @@ jobs:
 
     - name: Install frontend deps and build
       run: |
-        cd client
+        cd frontend
         npm install
         npm run build
 
-    - name: Install dependencies and build
-  run: |
-    npm install
-    npm run build
+    - name: Install backend and build
+      run: |
+        cd backend
+        node run dev
+        npm run build
 
 
     - name: Copy files to server (VPS)
