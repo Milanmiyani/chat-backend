@@ -24,10 +24,11 @@ jobs:
         npm install
         npm run build
 
-    - name: Install backend dependencies
-      run: |
-        cd server
-        npm install
+    - name: Install dependencies and build
+  run: |
+    npm install
+    npm run build
+
 
     - name: Copy files to server (VPS)
       uses: appleboy/scp-action@v0.1.3
